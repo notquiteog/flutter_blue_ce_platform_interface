@@ -22,5 +22,5 @@ over breaking changes for this package.
 See https://flutter.dev/go/platform-interface-breaking-changes for a discussion
 on why a less-clean interface is preferable to a breaking change.
 
-[1]: ../flutter_blue_ce
+[1]: https://github.com/notquiteog/flutter_blue_ce
 [2]: lib/flutter_blue_ce_platform_interface.dart

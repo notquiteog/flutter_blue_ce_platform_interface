@@ -7,27 +7,23 @@ export 'src/device_identifier.dart';
 export 'src/guid.dart';
 export 'src/log_level.dart';
 
-/// The interface that implementations of flutter_blue_plus must implement.
+/// The interface that implementations of flutter_blue_ce must implement.
 abstract base class FlutterBluePlusPlatform {
   static FlutterBluePlusPlatform? _instance;
 
-  /// The default instance of [FlutterBluePlusPlatform] to use. Throws an [UnsupportedError] if flutter_blue_plus is unsupported on this platform.
+  /// The default instance of [FlutterBluePlusPlatform] to use. Throws an [UnsupportedError] if flutter_blue_ce is unsupported on this platform.
   static FlutterBluePlusPlatform get instance {
     final instance = _instance;
 
     if (instance != null) {
       return instance;
     } else {
-      throw UnsupportedError(
-        'flutter_blue_plus is unsupported on this platform',
-      );
+      throw UnsupportedError('flutter_blue_ce is unsupported on this platform');
     }
   }
 
   /// Platform-specific plugins should set this with their own platform-specific class that extends [FlutterBluePlusPlatform] when they register themselves.
-  static set instance(
-    FlutterBluePlusPlatform instance,
-  ) {
+  static set instance(FlutterBluePlusPlatform instance) {
     _instance = instance;
   }
 
@@ -93,66 +89,48 @@ abstract base class FlutterBluePlusPlatform {
 
   static final _logsController = StreamController<String>.broadcast();
   static Stream<String> get logs => _logsController.stream;
-  
+
   static void log(String s) {
     _logsController.add(s);
     // ignore: avoid_print
     print(s);
   }
 
-  Future<bool> clearGattCache(
-    BmClearGattCacheRequest request,
-  ) {
+  Future<bool> clearGattCache(BmClearGattCacheRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> connect(
-    BmConnectRequest request,
-  ) {
+  Future<bool> connect(BmConnectRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> createBond(
-    BmCreateBondRequest request,
-  ) {
+  Future<bool> createBond(BmCreateBondRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> disconnect(
-    BmDisconnectRequest request,
-  ) {
+  Future<bool> disconnect(BmDisconnectRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> discoverServices(
-    BmDiscoverServicesRequest request,
-  ) {
+  Future<bool> discoverServices(BmDiscoverServicesRequest request) {
     return Future.value(false);
   }
 
   Future<BmBluetoothAdapterName> getAdapterName(
     BmBluetoothAdapterNameRequest request,
   ) {
-    return Future.value(
-      BmBluetoothAdapterName(
-        adapterName: '',
-      ),
-    );
+    return Future.value(BmBluetoothAdapterName(adapterName: ''));
   }
 
   Future<BmBluetoothAdapterState> getAdapterState(
     BmBluetoothAdapterStateRequest request,
   ) {
     return Future.value(
-      BmBluetoothAdapterState(
-        adapterState: BmAdapterStateEnum.unknown,
-      ),
+      BmBluetoothAdapterState(adapterState: BmAdapterStateEnum.unknown),
     );
   }
 
-  Future<BmBondStateResponse> getBondState(
-    BmBondStateRequest request,
-  ) {
+  Future<BmBondStateResponse> getBondState(BmBondStateRequest request) {
     return Future.value(
       BmBondStateResponse(
         remoteId: request.remoteId,
@@ -162,136 +140,83 @@ abstract base class FlutterBluePlusPlatform {
     );
   }
 
-  Future<BmDevicesList> getBondedDevices(
-    BmBondedDevicesRequest request,
-  ) {
-    return Future.value(
-      BmDevicesList(
-        devices: const [],
-      ),
-    );
+  Future<BmDevicesList> getBondedDevices(BmBondedDevicesRequest request) {
+    return Future.value(BmDevicesList(devices: const []));
   }
 
-  Future<PhySupport> getPhySupport(
-    PhySupportRequest request,
-  ) {
-    return Future.value(
-      PhySupport(
-        le2M: false,
-        leCoded: false,
-      ),
-    );
+  Future<PhySupport> getPhySupport(PhySupportRequest request) {
+    return Future.value(PhySupport(le2M: false, leCoded: false));
   }
 
-  Future<BmDevicesList> getSystemDevices(
-    BmSystemDevicesRequest request,
-  ) {
-    return Future.value(
-      BmDevicesList(
-        devices: const [],
-      ),
-    );
+  Future<BmDevicesList> getSystemDevices(BmSystemDevicesRequest request) {
+    return Future.value(BmDevicesList(devices: const []));
   }
 
-  Future<bool> isSupported(
-    BmIsSupportedRequest request,
-  ) {
+  Future<bool> isSupported(BmIsSupportedRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> readCharacteristic(
-    BmReadCharacteristicRequest request,
-  ) {
+  Future<bool> readCharacteristic(BmReadCharacteristicRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> readDescriptor(
-    BmReadDescriptorRequest request,
-  ) {
+  Future<bool> readDescriptor(BmReadDescriptorRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> readRssi(
-    BmReadRssiRequest request,
-  ) {
+  Future<bool> readRssi(BmReadRssiRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> removeBond(
-    BmRemoveBondRequest request,
-  ) {
+  Future<bool> removeBond(BmRemoveBondRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> requestConnectionPriority(
-    BmConnectionPriorityRequest request,
-  ) {
+  Future<bool> requestConnectionPriority(BmConnectionPriorityRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> requestMtu(
-    BmMtuChangeRequest request,
-  ) {
+  Future<bool> requestMtu(BmMtuChangeRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> setLogLevel(
-    BmSetLogLevelRequest request,
-  ) {
+  Future<bool> setLogLevel(BmSetLogLevelRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> setNotifyValue(
-    BmSetNotifyValueRequest request,
-  ) {
+  Future<bool> setNotifyValue(BmSetNotifyValueRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> setOptions(
-    BmSetOptionsRequest request,
-  ) {
+  Future<bool> setOptions(BmSetOptionsRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> setPreferredPhy(
-    BmPreferredPhy request,
-  ) {
+  Future<bool> setPreferredPhy(BmPreferredPhy request) {
     return Future.value(false);
   }
 
-  Future<bool> startScan(
-    BmScanSettings request,
-  ) {
+  Future<bool> startScan(BmScanSettings request) {
     return Future.value(false);
   }
 
-  Future<bool> stopScan(
-    BmStopScanRequest request,
-  ) {
+  Future<bool> stopScan(BmStopScanRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> turnOff(
-    BmTurnOffRequest request,
-  ) {
+  Future<bool> turnOff(BmTurnOffRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> turnOn(
-    BmTurnOnRequest request,
-  ) {
+  Future<bool> turnOn(BmTurnOnRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> writeCharacteristic(
-    BmWriteCharacteristicRequest request,
-  ) {
+  Future<bool> writeCharacteristic(BmWriteCharacteristicRequest request) {
     return Future.value(false);
   }
 
-  Future<bool> writeDescriptor(
-    BmWriteDescriptorRequest request,
-  ) {
+  Future<bool> writeDescriptor(BmWriteDescriptorRequest request) {
     return Future.value(false);
   }
 }

@@ -1,3 +1,7 @@
+## 2.3.8+ce.1
+* Rename the forked package to `flutter_blue_ce_platform_interface`.
+* Make `BmSetOptionsRequest.showPowerAlert` and `restoreState` nullable.
+
 ## 4.0.2
 * Added `androidCheckLocationServices` to `BmScanSettings` (#1199)
 

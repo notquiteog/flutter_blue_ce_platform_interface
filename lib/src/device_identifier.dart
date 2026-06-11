@@ -10,7 +10,8 @@ class DeviceIdentifier {
   int get hashCode => str.hashCode;
 
   @override
-  bool operator ==(other) => other is DeviceIdentifier && _compareAsciiLowerCase(str, other.str) == 0;
+  bool operator ==(other) =>
+      other is DeviceIdentifier && _compareAsciiLowerCase(str, other.str) == 0;
 
   @Deprecated('Use str instead')
   String get id => str;

@@ -1,14 +1,14 @@
-# flutter_blue_plus_platform_interface
+# flutter_blue_ce_platform_interface
 
-A common platform interface for the [`flutter_blue_plus`][1] plugin.
+A common platform interface for the [`flutter_blue_ce`][1] plugin.
 
-This interface allows platform-specific implementations of the `flutter_blue_plus`
+This interface allows platform-specific implementations of the `flutter_blue_ce`
 plugin, as well as the plugin itself, to ensure they are supporting the
 same interface.
 
 # Usage
 
-To implement a new platform-specific implementation of `flutter_blue_plus`, extend
+To implement a new platform-specific implementation of `flutter_blue_ce`, extend
 [`FlutterBluePlusPlatform`][2] with an implementation that performs the
 platform-specific behavior, and when you register your plugin, set the default
 `FlutterBluePlusPlatform` by calling
@@ -22,5 +22,5 @@ over breaking changes for this package.
 See https://flutter.dev/go/platform-interface-breaking-changes for a discussion
 on why a less-clean interface is preferable to a breaking change.
 
-[1]: ../flutter_blue_plus
-[2]: lib/flutter_blue_plus_platform_interface.dart
+[1]: ../flutter_blue_ce
+[2]: lib/flutter_blue_ce_platform_interface.dart
